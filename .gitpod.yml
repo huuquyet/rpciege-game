@@ -19,7 +19,7 @@ tasks:
     env:
       # This can be set by the user, but this terminal is dedicated to futurenet so set for convenience.
       SOROBAN_RPC_URL: "https://futurenet.rpciege.com:443"
-      SOROBAN_NETWORK_PASSPHRASE: "Test SDF Future Network ; October 2022"
+      SOROBAN_NETWORK_PASSPHRASE: "FUTURENET Test SDF Future Network ; October 2022"
     # To keep things tidy, we clear the terminal from the previous output.
     command: |
       clear

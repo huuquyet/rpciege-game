@@ -6,7 +6,7 @@ Follow along with [The Documentation](https://soroban.stellar.org/docs/).
 
 Open a development environment on GitPod:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rawritude/soroban-siege-gitpod)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/huuquyet/rpciege-game)
 
 WARNING: These implementations have not been tested or audited. They are likely
 to have significant errors and security vulnerabilities. They should not be
