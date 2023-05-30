@@ -11,9 +11,6 @@ git = "https://github.com/stellar/rs-soroban-sdk"
 version = "0.8.4"
 rev = "8f19b85"
 
-[features]
-testutils = ["soroban-sdk/testutils"]
-
 [profile.release]
 opt-level = "z"
 overflow-checks = true
