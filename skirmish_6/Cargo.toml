@@ -13,7 +13,7 @@ testutils = ["soroban-sdk/testutils"]
 
 [dependencies]
 soroban-sdk = { workspace = true }
-rand = { version = "0.8.5", default-features = false }
+rand = { version = "0.8.5", features = ["small_rng"], default-features = false }
 getrandom = { version = "0.2.10", features = ["js"] }
 
 [dev_dependencies]
