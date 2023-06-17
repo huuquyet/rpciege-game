@@ -7,13 +7,15 @@ members = [
     "skirmish_3",
     "rpciege_5_deployer",
     "rpciege_5_liquidity_pool",
-    "skirmish_5"
+    "skirmish_5",
+    "skirmish_6",
+    "skirmish_6_solve",
 ]
 
 [workspace.dependencies.soroban-sdk]
 git = "https://github.com/stellar/rs-soroban-sdk"
-version = "0.8.5"
-rev = "7d143e4"
+version = "0.8.7"
+rev = "0e07326"
 
 [profile.release]
 opt-level = "z"

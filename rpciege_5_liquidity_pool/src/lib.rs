@@ -27,9 +27,7 @@ const EVENT_MSG: [u8; 407] = [
 ];
 
 mod callback {
-    soroban_sdk::contractimport!(
-        file = "../../target/wasm32-unknown-unknown/release/rpciege_5_callback_example.wasm"
-    );
+    soroban_sdk::contractimport!(file = "../target/wasm32-unknown-unknown/release/skirmish_5.wasm");
 }
 
 mod contract;
