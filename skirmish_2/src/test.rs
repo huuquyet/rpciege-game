@@ -1,7 +1,8 @@
 #![cfg(test)]
 
-use super::{Skirmish2, Skirmish2Client};
 use soroban_sdk::{testutils::Address as _, Address, Env, String};
+
+use crate::{Skirmish2, Skirmish2Client};
 
 #[test]
 fn test() {

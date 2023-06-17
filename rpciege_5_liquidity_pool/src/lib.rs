@@ -1,5 +1,14 @@
 #![no_std]
 
+mod contract;
+mod interface;
+mod storage;
+mod types;
+
+mod callback {
+    soroban_sdk::contractimport!(file = "../target/wasm32-unknown-unknown/release/skirmish_5.wasm");
+}
+
 // You have been scammed! The pool will use your liquidity without giving any yield and there is no `withdraw` function to get your deposit back. To complete the challenge exploit the contract to get your funds back.
 // Deployer contract code: https://gist.github.com/StellarQuest/28e522c43dc87dcd912c6057913a38c9
 // Liquidity Pool contract code: https://gist.github.com/StellarQuest/b716fa112e965ffafd6bc2f9bb973463
@@ -25,12 +34,3 @@ const EVENT_MSG: [u8; 407] = [
     101, 108, 108, 97, 114, 81, 117, 101, 115, 116, 47, 98, 55, 49, 54, 102, 97, 49, 49, 50, 101,
     57, 54, 53, 102, 102, 97, 102, 100, 54, 98, 99, 50, 102, 57, 98, 98, 57, 55, 51, 52, 54, 51,
 ];
-
-mod callback {
-    soroban_sdk::contractimport!(file = "../target/wasm32-unknown-unknown/release/skirmish_5.wasm");
-}
-
-mod contract;
-mod interface;
-mod storage;
-mod types;

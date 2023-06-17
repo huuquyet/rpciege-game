@@ -1,3 +1,5 @@
+use soroban_sdk::{contractimpl, token, Address, BytesN, Env, Symbol};
+
 use crate::{
     callback,
     interface::LiquidityPoolTrait,
@@ -5,11 +7,9 @@ use crate::{
         has_token_a, read_reserve_a, read_reserve_b, read_token_a, read_token_b, write_reserve_a,
         write_reserve_b, write_token_a, write_token_b,
     },
+    types::Error,
     EVENT_MSG,
 };
-use soroban_sdk::{contractimpl, token, Address, BytesN, Env, Symbol};
-
-use crate::types::Error;
 
 pub struct LiquidityPool;
 

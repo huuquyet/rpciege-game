@@ -1,23 +1,13 @@
 use soroban_sdk::{contractimpl, Address, BytesN, Env};
 
 use crate::{
+    interface::DeployerTrait,
     liqpool,
     storage::{has_wasm_hash, read_wasm_hash, write_deployed_liqpool, write_wasm_hash},
     types::Error,
 };
 
 pub struct RPCiege5Deployer;
-
-pub trait DeployerTrait {
-    fn initialize(env: Env, liqpool_wasm_hash: BytesN<32>) -> Result<(), Error>;
-
-    fn new_liqpool(
-        env: Env,
-        salt: BytesN<32>,
-        token_a: Address,
-        token_b: Address,
-    ) -> Result<Address, Error>;
-}
 
 #[contractimpl]
 impl DeployerTrait for RPCiege5Deployer {

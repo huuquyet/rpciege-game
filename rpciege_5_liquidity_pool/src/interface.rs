@@ -1,5 +1,6 @@
-use crate::types::Error;
 use soroban_sdk::{Address, Env};
+
+use crate::types::Error;
 
 pub trait LiquidityPoolTrait {
     fn initialize(env: Env, token_a: Address, token_b: Address) -> Result<(), Error>;
