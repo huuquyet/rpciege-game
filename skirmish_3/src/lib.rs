@@ -1,9 +1,10 @@
 #![no_std]
 
 use soroban_sdk::{
-    contracterror, contractimpl, panic_with_error, xdr::ToXdr, Address, Env, Symbol,
+    contract, contracterror, contractimpl, panic_with_error, xdr::ToXdr, Address, Env, Symbol,
 };
 
+#[contract]
 pub struct Skirmish3;
 
 #[contracterror]
@@ -17,7 +18,7 @@ pub enum Error {
 #[contractimpl]
 impl Skirmish3 {
     pub fn game_3(env: Env, symbol: Symbol, _nft_dest: Address) -> Result<(), Error> {
-        if env.storage().has(&symbol) {
+        if env.storage().instance().has(&symbol) {
             panic_with_error!(env, Error::UsedPew);
         }
 
@@ -39,7 +40,7 @@ impl Skirmish3 {
         if !has_pew {
             panic_with_error!(env, Error::MissingPew);
         } else {
-            env.storage().set(&symbol, &true);
+            env.storage().instance().set(&symbol, &true);
         }
         Ok(())
     }

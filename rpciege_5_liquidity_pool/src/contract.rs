@@ -1,4 +1,4 @@
-use soroban_sdk::{contractimpl, token, Address, BytesN, Env, Symbol};
+use soroban_sdk::{contract, contractimpl, symbol_short, token, Address, BytesN, Env};
 
 use crate::{
     callback,
@@ -11,6 +11,7 @@ use crate::{
     EVENT_MSG,
 };
 
+#[contract]
 pub struct LiquidityPool;
 
 #[contractimpl]
@@ -60,7 +61,7 @@ impl LiquidityPoolTrait for LiquidityPool {
 
             // here emit "you've been scammed" event
             env.events().publish(
-                (Symbol::short("deposit"), addr),
+                (symbol_short!("deposit"), addr),
                 BytesN::from_array(&env, &EVENT_MSG),
             );
 
@@ -103,7 +104,7 @@ impl LiquidityPoolTrait for LiquidityPool {
 
         // here emit "you've been scammed" event
         env.events().publish(
-            (Symbol::short("deposit"), addr),
+            (symbol_short!("deposit"), addr),
             BytesN::from_array(&env, &EVENT_MSG),
         );
 

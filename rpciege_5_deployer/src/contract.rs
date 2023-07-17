@@ -1,4 +1,4 @@
-use soroban_sdk::{contractimpl, Address, BytesN, Env};
+use soroban_sdk::{contract, contractimpl, Address, BytesN, Env};
 
 use crate::{
     interface::DeployerTrait,
@@ -7,6 +7,7 @@ use crate::{
     types::Error,
 };
 
+#[contract]
 pub struct RPCiege5Deployer;
 
 #[contractimpl]
@@ -32,8 +33,8 @@ impl DeployerTrait for RPCiege5Deployer {
 
         let liqpool_id = env
             .deployer()
-            .with_current_contract(&salt)
-            .deploy(&read_wasm_hash(&env));
+            .with_current_contract(salt)
+            .deploy(read_wasm_hash(&env));
 
         let liqpool_client = liqpool::Client::new(&env, &liqpool_id);
         liqpool_client.initialize(&token_a, &token_b);

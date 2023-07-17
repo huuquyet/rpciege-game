@@ -1,5 +1,5 @@
 [package]
-name = "skirmish_1"
+name = "skirmish_6_solve"
 version = "0.1.0"
 edition = "2021"
 
@@ -10,6 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 soroban-sdk = { workspace = true }
+rand = { version = "0.8.5", features = ["small_rng"], default-features = false }
 
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }

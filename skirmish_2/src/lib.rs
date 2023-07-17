@@ -1,7 +1,8 @@
 #![no_std]
 
-use soroban_sdk::{contractimpl, Address, Env, String};
+use soroban_sdk::{contract, contractimpl, Address, Env, String};
 
+#[contract]
 pub struct Skirmish2;
 
 #[contractimpl]
