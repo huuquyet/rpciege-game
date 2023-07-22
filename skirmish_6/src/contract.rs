@@ -1,5 +1,5 @@
 use rand::{rngs::SmallRng, Rng, SeedableRng};
-use soroban_sdk::{contract, contractimpl, panic_with_error, xdr::ToXdr, Address, Env, Vec};
+use soroban_sdk::{contract, contractimpl, panic_with_error, xdr::ToXdr, Address, Env};
 
 use crate::{
     interface::Skirmish6Trait,

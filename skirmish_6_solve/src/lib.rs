@@ -5,9 +5,7 @@ mod contract;
 mod interface;
 
 pub mod skirmish_6 {
-    soroban_sdk::contractimport!(
-        file = "../target/wasm32-unknown-unknown/release/skirmish_6.wasm "
-    );
+    soroban_sdk::contractimport!(file = "../target/wasm32-unknown-unknown/release/skirmish_6.wasm");
 }
 
 #[cfg(test)]

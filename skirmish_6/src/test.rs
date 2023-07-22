@@ -63,5 +63,4 @@ fn test() {
         &source
     );
     assert_eq!(client.try_nightfall(&source, &nft_dest), Ok(Ok(())));
-
 }
