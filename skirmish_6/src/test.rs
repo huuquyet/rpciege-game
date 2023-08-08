@@ -2,7 +2,6 @@
 
 extern crate std;
 
-use core::ops::AddAssign;
 use rand::{rngs::SmallRng, Rng, SeedableRng};
 use soroban_sdk::{
     testutils::{Address as _, Ledger, LedgerInfo},
@@ -63,5 +62,4 @@ fn test() {
         &source
     );
     assert_eq!(client.try_nightfall(&source, &nft_dest), Ok(Ok(())));
-
 }
