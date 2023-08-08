@@ -15,8 +15,8 @@ impl SwapCallbackTrait for SwapCallback {
         amount: i128,
         initiator: Option<Address>,
     ) -> Result<(), Error> {
-        let token_client = token::Client::new(&env, &token_id);
-        token_client.transfer(&initiator.unwrap(), &liqpool, &amount);
+        // let token_client = token::Client::new(&env, &token_id);
+        // token_client.transfer(&initiator.unwrap(), &liqpool, &amount);
 
         Ok(())
     }
