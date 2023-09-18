@@ -6,7 +6,7 @@ RUN chmod +x ~/.local/bin/soroban
 RUN curl -L https://github.com/mozilla/sccache/releases/download/v0.5.4/sccache-v0.5.4-x86_64-unknown-linux-musl.tar.gz | tar xz --strip-components 1 -C ~/.local/bin sccache-v0.5.4-x86_64-unknown-linux-musl/sccache
 RUN chmod +x ~/.local/bin/sccache
 
-RUN curl -L https://github.com/watchexec/cargo-watch/releases/download/v8.4.1/cargo-watch-v8.4.1-x86_64-unknown-linux-gnu.tar.xz | tar xJ --strip-components 1 -C ~/.local/bin cargo-watch-v8.4.0-x86_64-unknown-linux-gnu/cargo-watch
+RUN curl -L https://github.com/watchexec/cargo-watch/releases/download/v8.4.1/cargo-watch-v8.4.1-x86_64-unknown-linux-gnu.tar.xz | tar xJ --strip-components 1 -C ~/.local/bin cargo-watch-v8.4.1-x86_64-unknown-linux-gnu/cargo-watch
 
 ENV RUSTC_WRAPPER=sccache
 ENV SCCACHE_CACHE_SIZE=5G
@@ -18,10 +18,9 @@ RUN rustup self uninstall -y
 RUN rm -rf .rustup
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
 
-# RUN rustup toolchain install nightly --allow-downgrade --profile minimal --component rust-src
+RUN rustup toolchain install nightly --allow-downgrade --profile minimal --component rust-src
 RUN rustup target add wasm32-unknown-unknown
-RUN rustup component add rust-src
-RUN rustup update
+RUN rustup defaut nightly
 
 RUN sudo apt-get update && sudo apt-get install -y binaryen
 
