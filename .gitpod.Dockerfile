@@ -20,7 +20,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --defau
 
 RUN rustup toolchain install nightly --allow-downgrade --profile minimal --component rust-src
 RUN rustup target add wasm32-unknown-unknown
-RUN rustup defaut nightly
+RUN rustup update
 
 RUN sudo apt-get update && sudo apt-get install -y binaryen
 
