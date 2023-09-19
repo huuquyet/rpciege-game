@@ -1,7 +1,7 @@
 FROM gitpod/workspace-full:2023-01-16-03-31-28
 
 RUN mkdir -p ~/.local/bin
-RUN curl -L https://github.com/stellar/soroban-tools/releases/download/v0.9.4/soroban-cli-0.9.4-x86_64-unknown-linux-gnu.tar.gz | tar xz --strip-components 1 -C ~/.local/bin soroban-cli-0.9.4-x86_64-unknown-linux-gnu/soroban
+RUN curl -L https://github.com/stellar/soroban-tools/releases/download/v0.9.4/soroban-cli-0.9.4-x86_64-unknown-linux-gnu.tar.gz | tar xz --strip-components 1 -C ~/.local/bin soroban
 RUN chmod +x ~/.local/bin/soroban
 RUN curl -L https://github.com/mozilla/sccache/releases/download/v0.5.4/sccache-v0.5.4-x86_64-unknown-linux-musl.tar.gz | tar xz --strip-components 1 -C ~/.local/bin sccache-v0.5.4-x86_64-unknown-linux-musl/sccache
 RUN chmod +x ~/.local/bin/sccache
