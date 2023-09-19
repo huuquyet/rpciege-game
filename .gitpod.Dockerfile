@@ -7,8 +7,6 @@ RUN chmod +x ~/.local/bin/sccache
 
 RUN curl -L https://github.com/watchexec/cargo-watch/releases/download/v8.4.1/cargo-watch-v8.4.1-x86_64-unknown-linux-gnu.tar.xz | tar xJ --strip-components 1 -C ~/.local/bin cargo-watch-v8.4.1-x86_64-unknown-linux-gnu/cargo-watch
 
-RUN cargo install --locked --version 0.9.4 soroban-cli
-
 ENV RUSTC_WRAPPER=sccache
 ENV SCCACHE_CACHE_SIZE=5G
 ENV SCCACHE_DIR=/workspace/.sccache
@@ -22,6 +20,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --defau
 RUN rustup toolchain install nightly --allow-downgrade --profile minimal --component rust-src
 RUN rustup target add wasm32-unknown-unknown
 RUN rustup update
+
+RUN cargo install --locked --version 0.9.4 soroban-cli
 
 RUN sudo apt-get update && sudo apt-get install -y binaryen
 
