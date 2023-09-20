@@ -8,10 +8,10 @@ use crate::{
 };
 
 #[contract]
-pub struct RPCiege5Deployer;
+pub struct Skirmish5Deployer;
 
 #[contractimpl]
-impl DeployerTrait for RPCiege5Deployer {
+impl DeployerTrait for Skirmish5Deployer {
     fn initialize(env: Env, liqpool_wasm_hash: BytesN<32>) -> Result<(), Error> {
         if has_wasm_hash(&env) {
             return Err(Error::AlreadyInitialized);
