@@ -17,11 +17,11 @@ RUN rustup self uninstall -y
 RUN rm -rf .rustup
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain none -y
 
-RUN rustup target add wasm32-unknown-unknown
-RUN cargo install --locked --version 20.0.0-rc2 soroban-cli
-
 RUN rustup toolchain install nightly --allow-downgrade --profile minimal --component rust-src
 RUN rustup default nightly
+
+RUN rustup target add wasm32-unknown-unknown
+RUN cargo install --locked --version 20.0.0-rc2 soroban-cli
 
 RUN sudo apt-get update && sudo apt-get install -y binaryen
 
