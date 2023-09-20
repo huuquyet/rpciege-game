@@ -1,5 +1,5 @@
 [package]
-name = "rpciege_5_liquidity_pool"
+name = "skirmish_5_deployer"
 version = "0.1.0"
 edition = "2021"
 
