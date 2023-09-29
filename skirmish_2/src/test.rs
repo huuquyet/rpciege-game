@@ -10,6 +10,6 @@ fn test() {
     let contract_id = env.register_contract(None, Skirmish2);
     let client = Skirmish2Client::new(&env, &contract_id);
 
-    let word = client.game_2(&Address::random(&env));
+    let word = client.game_2(&Some(Address::random(&env)));
     assert_eq!(word, String::from_slice(&env, "1694-1727"));
 }

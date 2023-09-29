@@ -18,7 +18,7 @@ fn test() {
     let client = Skirmish3Client::new(&env, &contract_id);
 
     // generate_permutations(&env, 3);
-    client.game_3(&Symbol::new(&env, "pew"), &Address::random(&env));
+    client.game_3(&Symbol::new(&env, "pew"), &Some(Address::random(&env)));
 }
 
 fn generate_permutations(env: &Env, length: usize) {

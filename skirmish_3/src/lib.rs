@@ -17,8 +17,8 @@ pub enum Error {
 
 #[contractimpl]
 impl Skirmish3 {
-    pub fn game_3(env: Env, symbol: Symbol, _nft_dest: Address) -> Result<(), Error> {
-        if env.storage().instance().has(&symbol) {
+    pub fn game_3(env: Env, symbol: Symbol, _nft_dest: Option<Address>) -> Result<(), Error> {
+        if env.storage().persistent().has(&symbol) {
             panic_with_error!(env, Error::UsedPew);
         }
 
@@ -27,7 +27,7 @@ impl Skirmish3 {
         let mut i = 0;
         let mut has_pew = false;
 
-        for v in hash.clone().into_iter() {
+        for v in hash.clone().iter() {
             if v == 112
                 && hash.get(i + 1).unwrap_or(0) == 101
                 && hash.get(i + 2).unwrap_or(0) == 119
@@ -40,7 +40,7 @@ impl Skirmish3 {
         if !has_pew {
             panic_with_error!(env, Error::MissingPew);
         } else {
-            env.storage().instance().set(&symbol, &true);
+            env.storage().persistent().set(&symbol, &true);
         }
         Ok(())
     }

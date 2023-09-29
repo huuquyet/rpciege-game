@@ -1,4 +1,4 @@
-use soroban_sdk::{contract, contractimpl, token, Address, Env};
+use soroban_sdk::{contract, contractimpl, Address, Env};
 
 use crate::{interface::SwapCallbackTrait, types::Error};
 
