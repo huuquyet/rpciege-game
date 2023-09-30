@@ -1,5 +1,5 @@
 use rand::{rngs::SmallRng, Rng, SeedableRng};
-use soroban_sdk::{contract, contractimpl, xdr::ToXdr, Address, Env};
+use soroban_sdk::{contract, contractimpl, xdr::ToXdr, Address, Env, IntoVal};
 
 use crate::{
     interface::Skirmish6SolveTrait,
@@ -17,7 +17,7 @@ impl Skirmish6SolveTrait for Skirmish6Solve {
         source: Address,
         nft_dest: Option<Address>,
     ) -> Result<(), Error> {
-        source.require_auth();
+        source.require_auth_for_args((&source,).into_val(&env));
         let mut rng = SmallRng::seed_from_u64(get_entropy(
             &env,
             &source,

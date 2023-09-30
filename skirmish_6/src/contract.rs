@@ -1,5 +1,5 @@
 use rand::{rngs::SmallRng, Rng, SeedableRng};
-use soroban_sdk::{contract, contractimpl, panic_with_error, xdr::ToXdr, Address, Env};
+use soroban_sdk::{contract, contractimpl, panic_with_error, xdr::ToXdr, Address, Env, IntoVal};
 
 use crate::{
     interface::Skirmish6Trait,
@@ -9,24 +9,33 @@ use crate::{
 #[contract]
 pub struct Skirmish6;
 
+const WEEKS_IN_LEDGERS: u32 = 151200 * 4;
+
 #[contractimpl]
 impl Skirmish6Trait for Skirmish6 {
     fn set_trap(env: Env, x: u32, y: u32, source: Address) -> Result<(), Error> {
-        source.require_auth();
+        source.require_auth_for_args((&source,).into_val(&env));
         let trap_xy = (x, y);
+
         env.storage()
-            .instance()
-            .set(&DataKey::TrapXY(source), &trap_xy);
+            .temporary()
+            .set(&DataKey::TrapXY(source.clone()), &trap_xy);
+        env.storage().temporary().bump(
+            &DataKey::TrapXY(source),
+            WEEKS_IN_LEDGERS,
+            WEEKS_IN_LEDGERS,
+        );
         Ok(())
     }
 
     fn nightfall(env: Env, source: Address, _nft_dest: Option<Address>) -> Result<(), Error> {
-        source.require_auth();
+        source.require_auth_for_args((&source,).into_val(&env));
         let mut rng = SmallRng::seed_from_u64(get_entropy(&env, &source));
         let monster_xy = (rng.gen(), rng.gen());
+
         let trap_xy = env
             .storage()
-            .instance()
+            .temporary()
             .get::<DataKey, (u32, u32)>(&DataKey::TrapXY(source))
             .unwrap_or_else(|| panic_with_error!(&env, Error::TrapNotSet));
         if monster_xy != trap_xy {
