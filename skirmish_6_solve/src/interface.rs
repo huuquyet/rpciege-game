@@ -7,7 +7,7 @@ pub trait Skirmish6SolveTrait {
         env: Env,
         skirmish_6_address: Address,
         source: Address,
-        nft_dest: Address,
+        nft_dest: Option<Address>,
     ) -> Result<(), Error>;
 
     fn find_monster(env: Env, source: Address, sequence: u64) -> (u32, u32);

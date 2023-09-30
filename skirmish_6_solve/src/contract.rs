@@ -15,7 +15,7 @@ impl Skirmish6SolveTrait for Skirmish6Solve {
         env: Env,
         skirmish_6_address: Address,
         source: Address,
-        nft_dest: Address,
+        nft_dest: Option<Address>,
     ) -> Result<(), Error> {
         source.require_auth();
         let mut rng = SmallRng::seed_from_u64(get_entropy(

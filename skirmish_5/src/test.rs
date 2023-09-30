@@ -11,9 +11,9 @@ fn test() {
     let client = SwapCallbackClient::new(&env, &contract_id);
 
     let source = Address::random(&env);
-    let addr = Address::random(&env);
+
     assert_eq!(
-        client.swap_callback(&source, &source, &i128::from(100), &Some(addr)),
+        client.swap_callback(&source, &source, &i128::from(100), &Some(source.clone())),
         ()
     );
 }

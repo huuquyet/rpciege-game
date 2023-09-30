@@ -20,7 +20,7 @@ impl Skirmish6Trait for Skirmish6 {
         Ok(())
     }
 
-    fn nightfall(env: Env, source: Address, _nft_dest: Address) -> Result<(), Error> {
+    fn nightfall(env: Env, source: Address, _nft_dest: Option<Address>) -> Result<(), Error> {
         source.require_auth();
         let mut rng = SmallRng::seed_from_u64(get_entropy(&env, &source));
         let monster_xy = (rng.gen(), rng.gen());
