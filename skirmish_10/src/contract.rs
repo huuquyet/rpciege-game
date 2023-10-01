@@ -7,11 +7,9 @@ use crate::{
 };
 
 #[contract]
-#[allow(dead_code)]
 pub struct Skirmish10;
 
 #[contractimpl]
-#[allow(dead_code)]
 impl Skirmish10Trait for Skirmish10 {
     /// Try winning the fund by providing your guess
     fn shuffle(

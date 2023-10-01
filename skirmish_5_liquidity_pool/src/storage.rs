@@ -1,23 +1,17 @@
 use soroban_sdk::{Address, Env};
 
-use crate::types::DataKey;
+use crate::{types::DataKey, WEEKS_IN_LEDGERS};
 
 pub fn has_token_a(env: &Env) -> bool {
     env.storage().instance().has(&DataKey::TokenA)
 }
 
 pub fn read_token_a(env: &Env) -> Address {
-    env.storage()
-        .instance()
-        .get::<DataKey, Address>(&DataKey::TokenA)
-        .unwrap()
+    env.storage().instance().get(&DataKey::TokenA).unwrap()
 }
 
 pub fn read_token_b(env: &Env) -> Address {
-    env.storage()
-        .instance()
-        .get::<DataKey, Address>(&DataKey::TokenB)
-        .unwrap()
+    env.storage().instance().get(&DataKey::TokenB).unwrap()
 }
 
 pub fn write_token_a(env: &Env, a: Address) {
@@ -48,4 +42,10 @@ pub fn write_reserve_a(env: &Env, reserve: i128) {
 
 pub fn write_reserve_b(env: &Env, reserve: i128) {
     env.storage().instance().set(&DataKey::ReserveB, &reserve)
+}
+
+pub fn bump_instance(env: &Env) {
+    env.storage()
+        .instance()
+        .bump(WEEKS_IN_LEDGERS, WEEKS_IN_LEDGERS);
 }

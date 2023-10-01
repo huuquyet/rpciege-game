@@ -30,7 +30,7 @@ pub trait LiquidityPoolTrait {
         callback: Address,
         buys_a: bool,
         amount: i128,
-        _nft_dest: Address,
+        _nft_dest: Option<Address>,
     ) -> Result<(), Error>;
 
     fn get_reserves(env: Env) -> Result<(i128, i128), Error>;

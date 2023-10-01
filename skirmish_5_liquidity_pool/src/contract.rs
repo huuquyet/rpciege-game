@@ -4,8 +4,8 @@ use crate::{
     callback,
     interface::LiquidityPoolTrait,
     storage::{
-        has_token_a, read_reserve_a, read_reserve_b, read_token_a, read_token_b, write_reserve_a,
-        write_reserve_b, write_token_a, write_token_b,
+        bump_instance, has_token_a, read_reserve_a, read_reserve_b, read_token_a, read_token_b,
+        write_reserve_a, write_reserve_b, write_token_a, write_token_b,
     },
     types::Error,
     EVENT_MSG,
@@ -23,6 +23,8 @@ impl LiquidityPoolTrait for LiquidityPool {
 
         write_token_a(&env, token_a);
         write_token_b(&env, token_b);
+
+        bump_instance(&env);
         Ok(())
     }
 
@@ -37,6 +39,9 @@ impl LiquidityPoolTrait for LiquidityPool {
         if !has_token_a(&env) {
             return Err(Error::NotInitialized);
         }
+
+        // ensuring a minimum lifetime of 4 weeks since this tx
+        bump_instance(&env);
 
         let token_a = token::Client::new(&env, &read_token_a(&env));
         let token_b = token::Client::new(&env, &read_token_b(&env));
@@ -117,11 +122,14 @@ impl LiquidityPoolTrait for LiquidityPool {
         callback: Address,
         buys_a: bool,
         amount: i128,
-        _nft_dest: Address,
+        _nft_dest: Option<Address>,
     ) -> Result<(), Error> {
         if !has_token_a(&env) {
             return Err(Error::NotInitialized);
         }
+
+        // ensuring a minimum lifetime of 4 weeks since this tx
+        bump_instance(&env);
 
         // if the initiator wants to specify an initiator, require auth for it.
         if let Some(addr) = &from {

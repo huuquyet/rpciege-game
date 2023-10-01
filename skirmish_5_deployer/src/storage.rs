@@ -11,12 +11,12 @@ pub fn write_wasm_hash(env: &Env, hash: BytesN<32>) {
 }
 
 pub fn read_wasm_hash(env: &Env) -> BytesN<32> {
-    env.storage()
-        .instance()
-        .get::<DataKey, BytesN<32>>(&DataKey::WasmHash)
-        .unwrap()
+    env.storage().instance().get(&DataKey::WasmHash).unwrap()
 }
 
+// this one goes to persistent storage since it's unbounded
 pub fn write_deployed_liqpool(env: &Env, id: Address) {
-    env.storage().instance().set(&DataKey::Deployed(id), &true);
+    env.storage()
+        .persistent()
+        .set(&DataKey::Deployed(id), &true);
 }

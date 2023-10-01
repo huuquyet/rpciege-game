@@ -21,6 +21,7 @@ fn test() {
     client.game_3(&Symbol::new(&env, "pew"), &Some(Address::random(&env)));
 }
 
+#[allow(dead_code)]
 fn generate_permutations(env: &Env, length: usize) {
     let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     std::fs::remove_file("output.txt").expect("delete file failed");
