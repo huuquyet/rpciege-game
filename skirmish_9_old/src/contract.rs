@@ -3,10 +3,10 @@ use soroban_sdk::{contract, contractimpl, BytesN, Env};
 use crate::{interface::Skirmish9OldTrait, types::Error};
 
 #[contract]
-pub struct SKirmish9Old;
+pub struct Skirmish9Old;
 
 #[contractimpl]
-impl Skirmish9OldTrait for SKirmish9Old {
+impl Skirmish9OldTrait for Skirmish9Old {
     fn version() -> u32 {
         1
     }
