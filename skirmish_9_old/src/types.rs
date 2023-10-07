@@ -9,6 +9,6 @@ pub enum Error {
 
 #[contracttype]
 #[derive(Clone)]
-enum DataKey {
+pub enum DataKey {
     Admin,
 }
