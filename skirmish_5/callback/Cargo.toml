@@ -1,5 +1,5 @@
 [package]
-name = "skirmish_5"
+name = "skirmish_5_callback"
 version = "0.1.0"
 edition = "2021"
 

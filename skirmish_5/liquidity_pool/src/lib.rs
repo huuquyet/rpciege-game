@@ -6,7 +6,7 @@ mod storage;
 mod types;
 
 mod callback {
-    soroban_sdk::contractimport!(file = "../target/wasm32-unknown-unknown/release/skirmish_5.wasm");
+    soroban_sdk::contractimport!(file = "../../target/wasm32-unknown-unknown/release/skirmish_5_callback.wasm");
 }
 
 const WEEKS_IN_LEDGERS: u32 = 151200 * 4;
