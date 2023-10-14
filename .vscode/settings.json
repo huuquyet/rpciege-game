@@ -1,8 +1,21 @@
 {
     // These settings exist to support the gitpod configuration.
-    "workbench.startupEditor": "none",
+    "deno.enable": true,
+    "deno.unstable": true,
+    "markdown.extension.toc.omittedFromToc": {
+        "README.md": ["## Table of Contents"]
+    },
+    "markdown.preview.doubleClickToSwitchToEditor": false,
+    "markdown.preview.typographer": true,
+    "markdownlint.config": {
+        "MD033": { "allowed_elements": ["details", "summary"]}
+    },
+    "markdownlint.run": "onType",
     "rust-analyzer.cargo.buildScripts.useRustcWrapper": false,
-    "rust-analyzer.linkedProjects": [
-        "./skirmish_6_solve/Cargo.toml"
-    ],
+    "rust-analyzer.cargo.useRustcWrapperForBuildScripts": false,
+    "rust-analyzer.linkedProjects": [],
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
+    "workbench.startupEditor": "none",
 }
