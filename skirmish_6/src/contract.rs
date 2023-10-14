@@ -1,5 +1,8 @@
+use core::ops::AddAssign;
 use rand::{rngs::SmallRng, Rng, SeedableRng};
-use soroban_sdk::{contract, contractimpl, panic_with_error, xdr::ToXdr, Address, Env, IntoVal};
+use soroban_sdk::{
+    contract, contractimpl, panic_with_error, xdr::ToXdr, Address, Env, IntoVal, Vec,
+};
 
 use crate::{
     interface::Skirmish6Trait,
@@ -43,10 +46,36 @@ impl Skirmish6Trait for Skirmish6 {
         }
         Ok(())
     }
+
+    fn print(env: Env, source: Address) -> Result<Vec<u32>, Error> {
+        source.require_auth_for_args((&source,).into_val(&env));
+        let mut sequence = u64::from(env.ledger().sequence());
+        let mut out = Vec::new(&env);
+        for _i in 0..5 {
+            let mut rng =
+                SmallRng::seed_from_u64(get_entropy_by_sequence(&env, &source, &sequence));
+            let monster_xy: (u32, u32) = (rng.gen(), rng.gen());
+            out.push_back(monster_xy.0);
+            out.push_back(monster_xy.1);
+            sequence.add_assign(6u64);
+        }
+        Ok(out)
+    }
 }
 
 pub(crate) fn get_entropy(env: &Env, source: &Address) -> u64 {
     let sequence = u64::from(env.ledger().sequence());
+    let mut entropy: u64 = u64::MIN;
+    for [a, b, c, d] in source.to_xdr(env).iter().array_chunks() {
+        entropy = entropy.wrapping_add(u64::from_be_bytes([a, 0, b, 0, c, 0, d, 0]));
+    }
+    // modulo 6 tolerance to account for the time delay
+    // between simulation and submission
+    entropy = entropy.wrapping_add(sequence - sequence % 6);
+    entropy
+}
+
+fn get_entropy_by_sequence(env: &Env, source: &Address, sequence: &u64) -> u64 {
     let mut entropy: u64 = u64::MIN;
     for [a, b, c, d] in source.to_xdr(env).iter().array_chunks() {
         entropy = entropy.wrapping_add(u64::from_be_bytes([a, 0, b, 0, c, 0, d, 0]));

@@ -16,3 +16,6 @@ Cargo.lock
 /.sccache/
 .DS_Store
 .soroban
+
+.vscode
+.idea

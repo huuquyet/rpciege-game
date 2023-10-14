@@ -2,14 +2,17 @@
 
 use soroban_sdk::{testutils::Address as _, Address, Env};
 
-use crate::{contract::{Skirmish6Solve, Skirmish6SolveClient}, skirmish_6};
+use crate::{
+    contract::{Skirmish6Solve, Skirmish6SolveClient},
+    skirmish_6,
+};
 
 #[test]
 #[should_panic]
 fn test() {
     let env = Env::default();
     env.mock_all_auths();
-    
+
     // Register contract skirmish 6 using the imported Wasm.
     let skirmish6 = env.register_contract_wasm(None, skirmish_6::WASM);
 
