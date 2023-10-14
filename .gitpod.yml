@@ -24,17 +24,20 @@ tasks:
     command: |
       clear
   - name: CLI - Sandbox
+    init: |
+      cargo clean
+      cargo fetch
+      cargo build --target wasm32-unknown-unknown --release
+      cargo test -- --nocapture
+    command: |
+      gp open README.md
+      clear
+
 vscode:
   extensions:
     - rust-lang.rust-analyzer
     - vadimcn.vscode-lldb
 
-github:
-  prebuilds:
-    addBadge: true
-    addComment: true
-    pullRequests: true
-    pullRequestsFromForks: true
 ports:
   # Your quickstart node has a Horizon API server and an RPC endpoint, both
   # listening on port 8000. It's publicly accessible through the internet.
