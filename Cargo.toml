@@ -12,7 +12,7 @@ members = [
     "skirmish_6/solve",
     "skirmish_7",
     "skirmish_9/old_contract",
-    "skirmish_10",
+    "skirmish_10/contract",
 ]
 
 [workspace.dependencies.soroban-sdk]
