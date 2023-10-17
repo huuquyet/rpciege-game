@@ -1,18 +1,21 @@
 [package]
 name = "skirmish_5_deployer"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+publish.workspace = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 crate-type = ["cdylib"]
-
-[features]
-testutils = ["soroban-sdk/testutils"]
+doctest = false
 
 [dependencies]
-soroban-sdk = { workspace = true }
+soroban-sdk.workspace = true
 
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }
+
+[features]
+testutils = ["soroban-sdk/testutils"]
