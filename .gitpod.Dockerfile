@@ -6,12 +6,12 @@ RUN curl -L https://github.com/stellar/soroban-tools/releases/download/v20.0.0-r
 RUN chmod +x ~/.local/bin/soroban
 RUN echo "source <(soroban completion --shell bash)" >> ~/.bashrc
 
-RUN curl -L https://github.com/mozilla/sccache/releases/download/v0.6.0/sccache-v0.6.0-x86_64-unknown-linux-musl.tar.gz | tar xz --strip-components 1 -C ~/.local/bin sccache-v0.6.0-x86_64-unknown-linux-musl/sccache
+RUN curl -L https://github.com/mozilla/sccache/releases/download/v0.7.1/sccache-v0.7.1-x86_64-unknown-linux-musl.tar.gz | tar xz --strip-components 1 -C ~/.local/bin sccache-v0.7.1-x86_64-unknown-linux-musl/sccache
 RUN chmod +x ~/.local/bin/sccache
 
 RUN curl -L https://github.com/watchexec/cargo-watch/releases/download/v8.4.1/cargo-watch-v8.4.1-x86_64-unknown-linux-gnu.tar.xz | tar xJ --strip-components 1 -C ~/.local/bin cargo-watch-v8.4.1-x86_64-unknown-linux-gnu/cargo-watch
 
-RUN curl -LO https://github.com/denoland/deno/releases/download/v1.37.2/deno-x86_64-unknown-linux-gnu.zip
+RUN curl -LO https://github.com/denoland/deno/releases/download/v1.38.0/deno-x86_64-unknown-linux-gnu.zip
 RUN unzip deno-x86_64-unknown-linux-gnu.zip -d ~/.local/bin
 
 ENV RUSTC_WRAPPER=sccache
