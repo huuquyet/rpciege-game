@@ -33,6 +33,12 @@ tasks:
     # To keep things tidy, we clear the terminal from the previous output.
     command: |
       clear
+  - name: CLI - RPCiege
+    env:
+      SOROBAN_RPC_URL: "https://futurenet.rpciege.com/"
+      SOROBAN_NETWORK_PASSPHRASE: "Test SDF Future Network ; October 2022"
+    command: |
+      clear
   - name: CLI - Futurenet
     env:
       SOROBAN_RPC_URL: "https://rpc-futurenet.stellar.org:443/"
@@ -61,8 +67,12 @@ ports:
     port: 8000
     visibility: public
     onOpen: ignore
-  - name: Futurenet
+  - name: RPCiege
     port: 8001
+    visibility: public
+    onOpen: ignore
+  - name: Futurenet
+    port: 8002
     visibility: public
     onOpen: ignore
   # This port is open for "Something with cargo test I think"??
