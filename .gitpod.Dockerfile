@@ -3,16 +3,16 @@ FROM gitpod/workspace-full:2023-11-24-15-04-57
 
 RUN mkdir -p ~/.local/bin
 
-RUN curl -L https://github.com/stellar/soroban-tools/releases/download/v20.0.0-rc.4.1/soroban-cli-20.0.0-rc.4.1-x86_64-unknown-linux-gnu.tar.gz | tar xz -C ~/.local/bin soroban
+RUN curl -L https://github.com/stellar/soroban-tools/releases/download/v20.0.2/soroban-cli-20.0.2-x86_64-unknown-linux-gnu.tar.gz | tar xz -C ~/.local/bin soroban
 RUN chmod +x ~/.local/bin/soroban
 RUN echo "source <(soroban completion --shell bash)" >> ~/.bashrc
 
-RUN curl -L https://github.com/mozilla/sccache/releases/download/v0.7.3/sccache-v0.7.3-x86_64-unknown-linux-musl.tar.gz | tar xz --strip-components 1 -C ~/.local/bin sccache-v0.7.3-x86_64-unknown-linux-musl/sccache
+RUN curl -L https://github.com/mozilla/sccache/releases/download/v0.7.4/sccache-v0.7.4-x86_64-unknown-linux-musl.tar.gz | tar xz --strip-components 1 -C ~/.local/bin sccache-v0.7.4-x86_64-unknown-linux-musl/sccache
 RUN chmod +x ~/.local/bin/sccache
 
 RUN curl -L https://github.com/watchexec/cargo-watch/releases/download/v8.4.1/cargo-watch-v8.4.1-x86_64-unknown-linux-gnu.tar.xz | tar xJ --strip-components 1 -C ~/.local/bin cargo-watch-v8.4.1-x86_64-unknown-linux-gnu/cargo-watch
 
-RUN curl -LO https://github.com/denoland/deno/releases/download/v1.38.3/deno-x86_64-unknown-linux-gnu.zip
+RUN curl -LO https://github.com/denoland/deno/releases/download/v1.38.5/deno-x86_64-unknown-linux-gnu.zip
 RUN unzip deno-x86_64-unknown-linux-gnu.zip -d ~/.local/bin
 
 ENV RUSTC_WRAPPER=sccache
