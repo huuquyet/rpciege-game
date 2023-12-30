@@ -167,7 +167,7 @@ impl LiquidityPoolTrait for LiquidityPool {
         let amount_in_with_fee = (amount * 997) / 1000;
         let amount_out = (reserve_out * amount_in_with_fee) / (reserve_in + amount_in_with_fee);
 
-        // call the callback function on the callback, for the swap to be successful the callback should send the specified `amount` of `token_in` to the liquidity pool
+        // call the swap_callback function on the callback. For the swap to be successful the callback should send the specified `amount` of `token_in` to the liquidity pool
         let callback_client = callback::Client::new(&env, &callback);
         callback_client.swap_callback(&env.current_contract_address(), &token_in, &amount, &from);
 

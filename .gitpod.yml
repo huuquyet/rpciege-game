@@ -4,12 +4,13 @@ image:
 tasks:
   - name: Testnet
     init: |
-      docker pull stellar/quickstart:testing@sha256:40636cdb1b9168b47e5dc120949fe3610ff914e8dd43409edb6fa66496bdd9c3
+      docker pull docker.io/stellar/quickstart:testing@sha256:3c7947f65db493f2ab8ca639753130ba4916c57d000d4a1f01ec530e3423853b
     command: |
       docker run --rm -it \
       -p 8000:8000 \
       --name stellar \
-      stellar/quickstart:testing@sha256:40636cdb1b9168b47e5dc120949fe3610ff914e8dd43409edb6fa66496bdd9c3 \
+      --network soroban-network \
+      docker.io/stellar/quickstart:testing@sha256:3c7947f65db493f2ab8ca639753130ba4916c57d000d4a1f01ec530e3423853b \
       --testnet \
       --enable-soroban-rpc
   - name: Futurenet
@@ -18,6 +19,7 @@ tasks:
     command: |
       docker run --rm -it \
       --name stellar \
+      --network soroban-network \
       -p 8001:8001 \
       stellar/quickstart:soroban-dev \
       --futurenet \

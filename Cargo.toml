@@ -11,8 +11,8 @@ members = [
     "skirmish_6/solve",
     "skirmish_7",
     "skirmish_9/old_contract",
-        "skirmish_10/contract",
-    ]
+    "skirmish_10/contract",
+]
 
 [workspace.package]
 version = "0.1.0"
@@ -21,7 +21,7 @@ authors = ["Quyet"]
 publish = false
 
 [workspace.dependencies]
-soroban-sdk = "20.0.0"
+soroban-sdk = "20.0.3"
 rand = { version = "0.8.5", features = ["small_rng"], default-features = false }
 itertools = "0.11.0"
 
