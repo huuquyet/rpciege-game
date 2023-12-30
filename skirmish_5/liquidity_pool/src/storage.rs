@@ -47,5 +47,5 @@ pub fn write_reserve_b(env: &Env, reserve: i128) {
 pub fn bump_instance(env: &Env) {
     env.storage()
         .instance()
-        .bump(WEEKS_IN_LEDGERS, WEEKS_IN_LEDGERS);
+        .extend_ttl(WEEKS_IN_LEDGERS, WEEKS_IN_LEDGERS);
 }

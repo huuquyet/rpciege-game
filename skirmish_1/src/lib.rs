@@ -14,7 +14,7 @@ pub struct Skirmish1;
 
 #[contractimpl]
 impl Skirmish1 {
-    pub fn game_1(_env: Env, _nft_dest: Address) -> Result<(), Error> {
+    pub fn game_1(_env: Env, _nft_dest: Option<Address>) -> Result<(), Error> {
         Ok(())
     }
 }

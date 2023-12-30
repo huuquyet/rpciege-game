@@ -23,7 +23,7 @@ impl Skirmish6Trait for Skirmish6 {
         env.storage()
             .temporary()
             .set(&DataKey::TrapXY(source.clone()), &trap_xy);
-        env.storage().temporary().bump(
+        env.storage().temporary().extend_ttl(
             &DataKey::TrapXY(source),
             WEEKS_IN_LEDGERS,
             WEEKS_IN_LEDGERS,

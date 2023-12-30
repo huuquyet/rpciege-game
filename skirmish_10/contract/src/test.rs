@@ -17,7 +17,7 @@ fn test_panic() {
     let contract_id = env.register_contract(None, Skirmish10);
     let client = Skirmish10Client::new(&env, &contract_id);
 
-    let addr = Address::random(&env);
+    let addr = Address::generate(&env);
     client.shuffle(&addr, &u32::MAX, &Some(addr.clone()));
 }
 
@@ -30,7 +30,7 @@ fn test() {
     let contract_id = env.register_contract(None, Skirmish10);
     let client = Skirmish10Client::new(&env, &contract_id);
 
-    let addr = Address::random(&env);
+    let addr = Address::generate(&env);
     let state = u64::MIN
         .wrapping_add(env.ledger().timestamp())
         .wrapping_add(env.ledger().sequence() as u64);

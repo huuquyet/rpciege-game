@@ -17,8 +17,8 @@ fn test() {
     let contract_id = env.register_contract(None, Skirmish6);
     let client = Skirmish6Client::new(&env, &contract_id);
 
-    let source = Address::random(&env);
-    let nft_dest = Address::random(&env);
+    let source = Address::generate(&env);
+    let nft_dest = Address::generate(&env);
 
     assert_eq!(
         client.try_nightfall(&source, &Some(nft_dest.clone())),

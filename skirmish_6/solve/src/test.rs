@@ -22,7 +22,7 @@ fn test() {
     let client = Skirmish6SolveClient::new(&env, &contract_id);
 
     // Create a random address for source and nft_dest args
-    let source = Address::random(&env);
+    let source = Address::generate(&env);
 
     // Invoke contract solve via its client, then it will invoke contract skirmish 6.
     assert_eq!(client.solve(&skirmish6, &source, &Some(source.clone())), ());

@@ -14,6 +14,6 @@ fn test() {
 
     assert_eq!(client.version(), 1);
 
-    let admin = Address::random(&env);
+    let admin = Address::generate(&env);
     assert_eq!(client.init(&admin), ());
 }
