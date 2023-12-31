@@ -1,3 +1,4 @@
+use arrayvec::ArrayVec;
 use soroban_sdk::{contract, contractimpl, Bytes, Env};
 
 use crate::{interface::Skirmish7Trait, types::Error};
@@ -11,9 +12,26 @@ pub(crate) const PRIMES: [u8; 54] = [
     197, 199, 211, 223, 227, 229, 233, 239, 241, 251,
 ];
 
+const CAP: usize = u16::MAX as usize;
+
 #[contractimpl]
 impl Skirmish7Trait for Skirmish7 {
     fn purify(env: Env, bytes: Bytes) -> Result<Bytes, Error> {
+        let mut purified_bytes = Bytes::new(&env);
+
+        let mut array: ArrayVec<u8, CAP> = ArrayVec::from_iter(bytes.iter());
+        array.sort_unstable();
+        for item in array {
+            match PRIMES.binary_search(&item) {
+                Ok(_) => purified_bytes.push_back(item),
+                _ => {}
+            }
+        }
+
+        Ok(purified_bytes)
+    }
+
+    fn filter(env: Env, bytes: Bytes) -> Result<Bytes, Error> {
         let mut purified_bytes = Bytes::new(&env);
         let mut prime_counts = [0u8; PRIMES.len()];
         let mut prime_index = 0;

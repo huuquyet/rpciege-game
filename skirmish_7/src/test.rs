@@ -17,4 +17,6 @@ fn test() {
 
     println!("{:?}", purified_bytes);
     println!("{:?}", env.budget().print());
+
+    assert_eq!(purified_bytes, client.filter(&bytes));
 }
