@@ -11,6 +11,7 @@ members = [
     "skirmish_6/solve",
     "skirmish_7",
     "skirmish_9/old_contract",
+    "skirmish_9/new_contract",
     "skirmish_10/contract",
 ]
 
