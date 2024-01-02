@@ -1,0 +1,22 @@
+[package]
+name = "skirmish_10_solve"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+publish.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk.workspace = true
+rand.workspace = true
+
+[dev_dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }
+
+[features]
+testutils = ["soroban-sdk/testutils"]
