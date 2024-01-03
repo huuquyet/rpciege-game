@@ -14,6 +14,7 @@ members = [
     "skirmish_9/new_contract",
     "skirmish_10/contract",
     "skirmish_10/solve",
+    "skirmish_11/restore",
 ]
 
 [workspace.package]
