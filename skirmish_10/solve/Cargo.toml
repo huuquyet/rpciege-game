@@ -17,6 +17,3 @@ rand.workspace = true
 
 [dev_dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }
-
-[features]
-testutils = ["soroban-sdk/testutils"]
