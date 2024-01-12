@@ -4,24 +4,24 @@ image:
 tasks:
   - name: Testnet
     init: |
-      docker pull docker.io/stellar/quickstart:testing@sha256:3c7947f65db493f2ab8ca639753130ba4916c57d000d4a1f01ec530e3423853b
+      docker pull stellar/quickstart:testing
     command: |
       docker run --rm -it \
       -p 8000:8000 \
       --name stellar \
       --network soroban-network \
-      docker.io/stellar/quickstart:testing@sha256:3c7947f65db493f2ab8ca639753130ba4916c57d000d4a1f01ec530e3423853b \
+      stellar/quickstart:testing \
       --testnet \
       --enable-soroban-rpc
   - name: Futurenet
     init: |
-      docker pull stellar/quickstart:soroban-dev
+      docker pull stellar/quickstart:testing
     command: |
       docker run --rm -it \
       --name stellar \
       --network soroban-network \
       -p 8001:8001 \
-      stellar/quickstart:soroban-dev \
+      stellar/quickstart:testing \
       --futurenet \
       --enable-soroban-rpc
   # This "CLI - Futurenet" task opens a terminal for you to interact with the
@@ -30,7 +30,7 @@ tasks:
     # We specify some required environment variables for use on the testnet.
     env:
       # This can be set by the user, but this terminal is dedicated to futurenet so set for convenience.
-      SOROBAN_RPC_URL: "https://soroban-testnet.stellar.org:443/"
+      SOROBAN_RPC_URL: "https://soroban-testnet.stellar.org/"
       SOROBAN_NETWORK_PASSPHRASE: "Test SDF Network ; September 2015"
     # To keep things tidy, we clear the terminal from the previous output.
     command: |
@@ -43,7 +43,7 @@ tasks:
       clear
   - name: CLI - Futurenet
     env:
-      SOROBAN_RPC_URL: "https://rpc-futurenet.stellar.org:443/"
+      SOROBAN_RPC_URL: "https://rpc-futurenet.stellar.org/"
       SOROBAN_NETWORK_PASSPHRASE: "Test SDF Future Network ; October 2022"
     command: |
       clear
