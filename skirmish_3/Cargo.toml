@@ -15,5 +15,5 @@ doctest = false
 soroban-sdk.workspace = true
 itertools.workspace = true
 
-[dev_dependencies]
+[dev-dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }

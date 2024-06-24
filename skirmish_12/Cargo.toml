@@ -1,5 +1,5 @@
 [package]
-name = "skirmish_10_solve"
+name = "skirmish_12"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
@@ -13,7 +13,6 @@ doctest = false
 
 [dependencies]
 soroban-sdk.workspace = true
-rand.workspace = true
 
 [dev-dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }
